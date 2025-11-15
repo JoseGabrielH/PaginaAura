@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f0f0f5;
+}
+
+nav {
+    background: #4a4aff;
+    color: white;
+    padding: 15px 20px;
+    font-size: 20px;
+}
+
+.contenido {
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+}
