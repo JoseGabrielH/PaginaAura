@@ -1,7 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 nav {
@@ -24,6 +34,12 @@ nav {
 
 .cuadro {
     text-align: center;
+    width: 150px;
+    height: 150px;
+    background: white;
+    border-radius: 15px;
+    object-fit: cover;
+    display: block;
 }
 
 .cuadro img {
@@ -39,4 +55,9 @@ nav {
     color: white;
     margin-top: 10px;
     font-weight: bold;
+}
+
+.contenedor {
+    display: flex;
+    gap: 20px;
 }
