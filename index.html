@@ -8,6 +8,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="background-chart">
+        <svg class="chart-svg" viewBox="0 0 1000 600" preserveAspectRatio="none">
+            <!-- Área de subida (verde) -->
+            <defs>
+                <linearGradient id="greenGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:rgba(0,255,65,0.15);stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:rgba(0,255,65,0.05);stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:rgba(255,0,50,0.15);stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:rgba(255,0,50,0.05);stop-opacity:1" />
+                </linearGradient>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            
+            <!-- Curva de subida (verde) -->
+            <path d="M 0 400 Q 250 300 500 200 T 1000 100 L 1000 0 L 0 0 Z" fill="url(#greenGradient)" />
+            
+            <!-- Curva de bajada (roja) -->
+            <path d="M 0 400 Q 250 300 500 200 T 1000 100 L 1000 600 L 0 600 Z" fill="url(#redGradient)" />
+            
+            <!-- Línea de la gráfica -->
+            <path d="M 0 400 Q 250 300 500 200 T 1000 100" stroke="#00ff41" stroke-width="3" fill="none" filter="url(#glow)" opacity="0.8" />
+            
+            <!-- Flecha verde (arriba) -->
+            <g filter="url(#glow)">
+                <polygon points="150,150 180,100 210,150" fill="#00ff41" stroke="#00ff41" stroke-width="1" opacity="0.9" />
+                <rect x="175" y="150" width="10" height="80" fill="#00ff41" opacity="0.9" />
+                <text x="200" y="260" font-family="Poppins" font-size="28" font-weight="700" fill="#00ff41" opacity="0.9">SUBIDA</text>
+            </g>
+            
+            <!-- Flecha roja (abajo) -->
+            <g filter="url(#glow)">
+                <polygon points="850,450 880,500 910,450" fill="#ff0032" stroke="#ff0032" stroke-width="1" opacity="0.9" />
+                <rect x="875" y="370" width="10" height="80" fill="#ff0032" opacity="0.9" />
+                <text x="700" y="520" font-family="Poppins" font-size="28" font-weight="700" fill="#ff0032" opacity="0.9">BAJADA</text>
+            </g>
+        </svg>
+    </div>
+
     <div class="container">
         <div class="box-wrapper">
             <div class="number">1000</div>
