@@ -17,7 +17,34 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.box-wrapper:hover {
+    transform: translateY(-10px);
+}
+
+.number {
+    color: #00ff41;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 
+        0 0 10px rgba(0, 255, 65, 0.8),
+        0 0 20px rgba(0, 255, 65, 0.5),
+        0 0 30px rgba(0, 255, 65, 0.3);
+    filter: brightness(1.2);
+    margin-bottom: 4px;
+    transition: all 0.3s ease;
+}
+
+.box-wrapper:hover .number {
+    text-shadow: 
+        0 0 15px rgba(0, 255, 65, 1),
+        0 0 30px rgba(0, 255, 65, 0.7),
+        0 0 45px rgba(0, 255, 65, 0.5),
+        0 0 60px rgba(0, 255, 65, 0.3);
 }
 
 .box {
@@ -51,7 +78,7 @@ body {
 }
 
 .box-wrapper:hover .box {
-    transform: translateY(-5px) scale(1.05);
+    transform: scale(1.05);
     box-shadow: 
         0 0 40px rgba(255, 255, 255, 0.8),
         0 0 80px rgba(255, 255, 255, 0.4),
