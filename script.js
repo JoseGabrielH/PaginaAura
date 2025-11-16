@@ -23,6 +23,18 @@ function playSuccessSound() {
     successSound.play().catch(err => console.log('Error al reproducir sonido:', err));
 }
 
+// Función para agregar animación al botón
+function animateButton(button, type) {
+    button.classList.remove('animate-gain', 'animate-lose');
+    void button.offsetWidth; // Trigger reflow para resetear la animación
+    
+    if (type === 'gain') {
+        button.classList.add('animate-gain');
+    } else if (type === 'lose') {
+        button.classList.add('animate-lose');
+    }
+}
+
 // Inicializar colores en tiempo de carga
 function initializeColors() {
     boxWrappers.forEach(wrapper => {
@@ -62,6 +74,7 @@ boxWrappers.forEach(wrapper => {
 gainBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     playClickSound();
+    animateButton(gainBtn, 'gain');
     closeSubmenu();
     
     const btnRect = gainBtn.getBoundingClientRect();
@@ -76,6 +89,7 @@ gainBtn.addEventListener('click', (e) => {
 loseBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     playClickSound();
+    animateButton(loseBtn, 'lose');
     closeSubmenu();
     
     const btnRect = loseBtn.getBoundingClientRect();
@@ -104,6 +118,19 @@ submenuOptions.forEach(option => {
         currentValue += points;
         currentWrapper.dataset.value = currentValue;
         numberElement.textContent = currentValue;
+        
+        // Determinar tipo de animación
+        const animationType = points > 0 ? 'gain' : 'lose';
+        
+        // Agregar animación al número
+        numberElement.classList.remove('number-gain', 'number-lose');
+        void numberElement.offsetWidth; // Trigger reflow
+        numberElement.classList.add(animationType === 'gain' ? 'number-gain' : 'number-lose');
+        
+        // Agregar animación al perfil
+        boxElement.classList.remove('box-gain', 'box-lose');
+        void boxElement.offsetWidth; // Trigger reflow
+        boxElement.classList.add(animationType === 'gain' ? 'box-gain' : 'box-lose');
         
         // Actualizar colores
         if (currentValue < 0) {
