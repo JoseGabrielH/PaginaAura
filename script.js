@@ -2,6 +2,25 @@ const boxWrappers = document.querySelectorAll('.box-wrapper');
 const menuPopup = document.getElementById('menuPopup');
 let currentWrapper = null;
 
+// Inicializar colores en tiempo de carga
+function initializeColors() {
+    boxWrappers.forEach(wrapper => {
+        const numberElement = wrapper.querySelector('.number');
+        const boxElement = wrapper.querySelector('.box');
+        const nameElement = wrapper.querySelector('.name');
+        const currentValue = parseInt(wrapper.dataset.value);
+        
+        if (currentValue < 0) {
+            numberElement.classList.add('negative');
+            boxElement.classList.add('negative');
+            nameElement.classList.add('negative');
+        }
+    });
+}
+
+// Ejecutar inicialización al cargar la página
+document.addEventListener('DOMContentLoaded', initializeColors);
+
 boxWrappers.forEach(wrapper => {
     wrapper.addEventListener('click', (e) => {
         e.stopPropagation();
