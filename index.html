@@ -28,23 +28,16 @@
                 </filter>
             </defs>
             
-            <!-- Curva de subida (verde) -->
             <path d="M 0 400 Q 250 300 500 200 T 1000 100 L 1000 0 L 0 0 Z" fill="url(#greenGradient)" />
-            
-            <!-- Curva de bajada (roja) -->
             <path d="M 0 400 Q 250 300 500 200 T 1000 100 L 1000 600 L 0 600 Z" fill="url(#redGradient)" />
-            
-            <!-- Línea de la gráfica con efecto neón -->
             <path d="M 0 400 Q 250 300 500 200 T 1000 100" stroke="#00ff64" stroke-width="4" fill="none" filter="url(#neonGlow)" opacity="0.9" />
             
-            <!-- Flecha verde (arriba) -->
             <g filter="url(#neonGlow)">
                 <polygon points="150,150 180,100 210,150" fill="#00ff64" stroke="#00ff64" stroke-width="2" opacity="1" />
                 <rect x="175" y="150" width="10" height="80" fill="#00ff64" opacity="1" />
                 <text x="200" y="260" font-family="Poppins" font-size="32" font-weight="700" fill="#00ff64" opacity="1" letter-spacing="2">SUBIDA</text>
             </g>
             
-            <!-- Flecha roja (abajo) -->
             <g filter="url(#neonGlow)">
                 <polygon points="850,450 880,500 910,450" fill="#ff0064" stroke="#ff0064" stroke-width="2" opacity="1" />
                 <rect x="875" y="370" width="10" height="80" fill="#ff0064" opacity="1" />
@@ -54,41 +47,53 @@
     </div>
 
     <div class="container">
-        <div class="box-wrapper">
+        <div class="box-wrapper" data-value="1000">
             <div class="number">1000</div>
             <div class="box"></div>
             <p class="name">José</p>
         </div>
-        <div class="box-wrapper">
+        <div class="box-wrapper" data-value="1000">
             <div class="number">1000</div>
             <div class="box"></div>
             <p class="name">Johan</p>
         </div>
-        <div class="box-wrapper">
+        <div class="box-wrapper" data-value="1000">
             <div class="number">1000</div>
             <div class="box"></div>
             <p class="name">Andrea</p>
         </div>
-        <div class="box-wrapper">
+        <div class="box-wrapper" data-value="1000">
             <div class="number">1000</div>
             <div class="box"></div>
             <p class="name">Paula</p>
         </div>
-        <div class="box-wrapper">
+        <div class="box-wrapper" data-value="1000">
             <div class="number">1000</div>
             <div class="box"></div>
             <p class="name">Sofia</p>
         </div>
-        <div class="box-wrapper">
+        <div class="box-wrapper" data-value="1000">
             <div class="number">1000</div>
             <div class="box"></div>
             <p class="name">Zoe</p>
         </div>
-        <div class="box-wrapper">
+        <div class="box-wrapper" data-value="1000">
             <div class="number">1000</div>
             <div class="box"></div>
             <p class="name">Juan</p>
         </div>
     </div>
+
+    <!-- Menú flotante -->
+    <div class="menu-popup" id="menuPopup">
+        <button class="menu-option menu-gain" data-action="gain">
+            <span class="option-icon">↑</span> Ganó aura
+        </button>
+        <button class="menu-option menu-lose" data-action="lose">
+            <span class="option-icon">↓</span> Perdió aura
+        </button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
