@@ -23,8 +23,9 @@ body {
 }
 
 .box {
-    width: 100%;
-    aspect-ratio: 1;
+    width: 60px;
+    height: 60px;
     background-color: #ffffff;
     border-radius: 15px;
+    flex-shrink: 0;
 }
