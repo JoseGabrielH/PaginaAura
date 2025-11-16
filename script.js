@@ -6,7 +6,22 @@ const gainBtn = document.querySelector('.menu-gain-btn');
 const loseBtn = document.querySelector('.menu-lose-btn');
 const submenuOptions = document.querySelectorAll('.submenu-option');
 
+// Elementos de audio
+const clickSound = document.getElementById('clickSound');
+const successSound = document.getElementById('successSound');
+
 let currentWrapper = null;
+
+// Función para reproducir sonido
+function playClickSound() {
+    clickSound.currentTime = 0;
+    clickSound.play().catch(err => console.log('Error al reproducir sonido:', err));
+}
+
+function playSuccessSound() {
+    successSound.currentTime = 0;
+    successSound.play().catch(err => console.log('Error al reproducir sonido:', err));
+}
 
 // Inicializar colores en tiempo de carga
 function initializeColors() {
@@ -30,6 +45,7 @@ document.addEventListener('DOMContentLoaded', initializeColors);
 boxWrappers.forEach(wrapper => {
     wrapper.addEventListener('click', (e) => {
         e.stopPropagation();
+        playClickSound();
         currentWrapper = wrapper;
         
         const rect = wrapper.getBoundingClientRect();
@@ -45,6 +61,7 @@ boxWrappers.forEach(wrapper => {
 // Mostrar submenú Ganó aura
 gainBtn.addEventListener('click', (e) => {
     e.stopPropagation();
+    playClickSound();
     closeSubmenu();
     
     const btnRect = gainBtn.getBoundingClientRect();
@@ -58,6 +75,7 @@ gainBtn.addEventListener('click', (e) => {
 // Mostrar submenú Perdió aura
 loseBtn.addEventListener('click', (e) => {
     e.stopPropagation();
+    playClickSound();
     closeSubmenu();
     
     const btnRect = loseBtn.getBoundingClientRect();
@@ -72,6 +90,7 @@ loseBtn.addEventListener('click', (e) => {
 submenuOptions.forEach(option => {
     option.addEventListener('click', (e) => {
         e.stopPropagation();
+        playSuccessSound();
         
         if (!currentWrapper) return;
         
