@@ -32,6 +32,36 @@
     }
 }
 
+@keyframes titleGlow {
+    0%, 100% {
+        box-shadow: 
+            0 0 20px rgba(0, 255, 100, 0.4),
+            0 0 40px rgba(0, 255, 100, 0.3),
+            0 0 60px rgba(0, 255, 100, 0.2),
+            0 0 80px rgba(0, 255, 100, 0.1),
+            inset 0 0 20px rgba(0, 255, 100, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 0 30px rgba(0, 255, 100, 0.6),
+            0 0 60px rgba(0, 255, 100, 0.5),
+            0 0 90px rgba(0, 255, 100, 0.4),
+            0 0 120px rgba(0, 255, 100, 0.2),
+            inset 0 0 30px rgba(0, 255, 100, 0.2);
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.3;
+        filter: blur(15px);
+    }
+    50% {
+        opacity: 0.6;
+        filter: blur(25px);
+    }
+}
+
 @keyframes neonFlickerRed {
     0%, 18%, 22%, 25%, 53%, 57%, 100% {
         text-shadow: 
@@ -131,7 +161,6 @@ body::before {
 
 body {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -139,21 +168,55 @@ body {
     z-index: 2;
 }
 
+.page-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.title-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .title {
     color: #00ff64;
-    font-size: 60px;
+    font-size: 80px;
     font-weight: 700;
-    letter-spacing: 5px;
+    letter-spacing: 8px;
     text-shadow: 
         0 0 20px rgba(0, 255, 100, 0.8),
         0 0 40px rgba(0, 255, 100, 0.6),
         0 0 60px rgba(0, 255, 100, 0.4),
-        0 0 80px rgba(0, 255, 100, 0.2);
+        0 0 80px rgba(0, 255, 100, 0.2),
+        0 0 100px rgba(0, 255, 100, 0.1);
     margin: 0;
-    margin-bottom: 40px;
-    animation: neonPulse 4s ease-in-out infinite;
+    padding: 20px 40px;
     position: relative;
-    z-index: 2;
+    z-index: 1;
+    animation: neonPulse 3s ease-in-out infinite;
+    border: 2px solid rgba(0, 255, 100, 0.3);
+    border-radius: 10px;
+}
+
+.title-glow {
+    position: absolute;
+    width: 600px;
+    height: 150px;
+    background: radial-gradient(ellipse at center, rgba(0, 255, 100, 0.3), transparent 70%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    animation: glowPulse 4s ease-in-out infinite;
+    filter: blur(20px);
+    pointer-events: none;
 }
 
 .container {
