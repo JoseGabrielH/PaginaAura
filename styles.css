@@ -17,4 +17,34 @@ body {
     height: 120px;
     background: white;
     border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+}
+
+.box:nth-child(1) {
+    background-image: url('j.jpeg');
+}
+
+.box:nth-child(2) {
+    background-image: url('jo.jpeg');
+}
+
+.box:nth-child(3) {
+    background-image: url('a.jpeg');
+}
+
+.box:nth-child(4) {
+    background-image: url('p.jpeg');
+}
+
+.box:nth-child(5) {
+    background-image: url('s.jpeg');
+}
+
+.box:nth-child(6) {
+    background-image: url('z.jpeg');
+}
+
+.box:nth-child(7) {
+    background-image: url('j.jpeg');
 }
