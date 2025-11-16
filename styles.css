@@ -670,7 +670,6 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    white-space: nowrap;
 }
 
 .option-icon {
@@ -686,7 +685,6 @@ body {
     box-shadow: 
         0 0 15px rgba(0, 255, 100, 0.4),
         inset 0 0 10px rgba(0, 255, 100, 0.1);
-    transform: translateX(5px);
 }
 
 .menu-lose-btn {
@@ -798,4 +796,255 @@ body {
     box-shadow: 
         0 0 15px rgba(255, 0, 100, 0.5),
         inset 0 0 10px rgba(255, 0, 100, 0.2);
+}
+
+/* ========== SECCIÓN DE SUGERENCIAS ========== */
+.suggestions-section {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(10, 14, 39, 0.98), rgba(10, 14, 39, 0.95));
+    border-top: 2px solid rgba(0, 255, 100, 0.4);
+    padding: 30px 20px 20px;
+    z-index: 50;
+    box-shadow: 
+        0 -10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(0, 255, 100, 0.2);
+}
+
+.suggestions-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.suggestions-title {
+    color: #00ff64;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 0 0 15px 0;
+    text-shadow: 
+        0 0 10px rgba(0, 255, 100, 0.8),
+        0 0 20px rgba(0, 255, 100, 0.6);
+    text-align: center;
+}
+
+.suggestion-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    padding: 8px 16px;
+    border: 1.5px solid rgba(0, 255, 100, 0.3);
+    border-radius: 6px;
+    background: transparent;
+    color: #00ff64;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 
+        0 0 5px rgba(0, 255, 100, 0.6),
+        0 0 10px rgba(0, 255, 100, 0.3);
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tab-icon {
+    font-size: 14px;
+}
+
+.tab-button:hover {
+    background: rgba(0, 255, 100, 0.08);
+    border-color: rgba(0, 255, 100, 0.6);
+    box-shadow: 
+        0 0 10px rgba(0, 255, 100, 0.3),
+        inset 0 0 5px rgba(0, 255, 100, 0.1);
+}
+
+.tab-button.active {
+    background: rgba(0, 255, 100, 0.15);
+    border-color: rgba(0, 255, 100, 0.8);
+    box-shadow: 
+        0 0 15px rgba(0, 255, 100, 0.5),
+        inset 0 0 8px rgba(0, 255, 100, 0.2);
+    text-shadow: 
+        0 0 10px rgba(0, 255, 100, 0.8),
+        0 0 20px rgba(0, 255, 100, 0.6);
+}
+
+.suggestion-content {
+    position: relative;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeInSuggestion 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeInSuggestion {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.suggestion-textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(0, 255, 100, 0.03);
+    border: 1.5px solid rgba(0, 255, 100, 0.3);
+    border-radius: 8px;
+    color: #00ff64;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    resize: none;
+    height: 70px;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 0 10px rgba(0, 255, 100, 0.1),
+        inset 0 0 5px rgba(0, 255, 100, 0.05);
+    letter-spacing: 0.3px;
+}
+
+.suggestion-textarea:focus {
+    outline: none;
+    border-color: rgba(0, 255, 100, 0.8);
+    background: rgba(0, 255, 100, 0.08);
+    box-shadow: 
+        0 0 20px rgba(0, 255, 100, 0.3),
+        inset 0 0 10px rgba(0, 255, 100, 0.1);
+}
+
+.suggestion-textarea::placeholder {
+    color: rgba(0, 255, 100, 0.4);
+}
+
+.char-count {
+    text-align: right;
+    font-size: 11px;
+    color: rgba(0, 255, 100, 0.5);
+    margin: 6px 0 10px 0;
+    letter-spacing: 0.5px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 11px;
+    border: 1.5px solid rgba(0, 255, 100, 0.4);
+    border-radius: 8px;
+    background: rgba(0, 255, 100, 0.05);
+    color: #00ff64;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 
+        0 0 5px rgba(0, 255, 100, 0.6),
+        0 0 10px rgba(0, 255, 100, 0.3);
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-icon {
+    font-size: 14px;
+}
+
+.submit-btn:hover {
+    background: rgba(0, 255, 100, 0.15);
+    border-color: rgba(0, 255, 100, 0.8);
+    box-shadow: 
+        0 0 15px rgba(0, 255, 100, 0.4),
+        inset 0 0 8px rgba(0, 255, 100, 0.2);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.submit-btn.sending {
+    animation: buttonPulse 0.6s ease-in-out;
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+.feedback-message {
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    min-height: 18px;
+    transition: all 0.3s ease;
+}
+
+.feedback-message.success {
+    color: #00ff64;
+    text-shadow: 
+        0 0 10px rgba(0, 255, 100, 0.8),
+        0 0 20px rgba(0, 255, 100, 0.6);
+    animation: slideInSuccess 0.4s ease;
+}
+
+.feedback-message.error {
+    color: #ff0064;
+    text-shadow: 
+        0 0 10px rgba(255, 0, 100, 0.8),
+        0 0 20px rgba(255, 0, 100, 0.6);
+    animation: slideInError 0.4s ease;
+}
+
+@keyframes slideInSuccess {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInError {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajustar el body para dejar espacio al apartado de sugerencias */
+body {
+    padding-bottom: 280px;
+    overflow-y: auto;
 }
