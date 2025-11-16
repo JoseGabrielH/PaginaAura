@@ -24,6 +24,7 @@ menuOptions.forEach(option => {
         if (!currentWrapper) return;
         
         const numberElement = currentWrapper.querySelector('.number');
+        const boxElement = currentWrapper.querySelector('.box');
         let currentValue = parseInt(currentWrapper.dataset.value);
         
         if (option.dataset.action === 'gain') {
@@ -35,11 +36,13 @@ menuOptions.forEach(option => {
         currentWrapper.dataset.value = currentValue;
         numberElement.textContent = currentValue;
         
-        // Actualizar color en tiempo real
+        // Actualizar color del número y del perfil en tiempo real
         if (currentValue < 0) {
             numberElement.classList.add('negative');
+            boxElement.classList.add('negative');
         } else {
             numberElement.classList.remove('negative');
+            boxElement.classList.remove('negative');
         }
         
         closeMenu();
