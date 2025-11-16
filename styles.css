@@ -118,6 +118,17 @@
     }
 }
 
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 body {
     background: #0a0e27;
     margin: 0;
@@ -166,6 +177,31 @@ body {
     height: 100vh;
     position: relative;
     z-index: 2;
+}
+
+.info-text {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: #00ff64;
+    font-size: 14px;
+    font-weight: 600;
+    max-width: 300px;
+    text-align: right;
+    letter-spacing: 1px;
+    text-shadow: 
+        0 0 10px rgba(0, 255, 100, 0.8),
+        0 0 20px rgba(0, 255, 100, 0.6),
+        0 0 30px rgba(0, 255, 100, 0.4);
+    padding: 15px 20px;
+    border: 1px solid rgba(0, 255, 100, 0.3);
+    border-radius: 8px;
+    background: rgba(0, 255, 100, 0.05);
+    box-shadow: 
+        0 0 15px rgba(0, 255, 100, 0.3),
+        inset 0 0 10px rgba(0, 255, 100, 0.1);
+    animation: neonPulse 4s ease-in-out infinite;
+    z-index: 100;
 }
 
 .page-content {
@@ -372,7 +408,7 @@ body {
 }
 
 .box-wrapper:nth-child(7) .box {
-    background-image: url('WhatsApp\ Image\ 2025-11-15\ at\ 10.49.11\ PM.jpeg');
+    background-image: url('j.jpeg');
 }
 
 .name {
@@ -411,7 +447,7 @@ body {
         0 0 30px rgba(255, 0, 100, 0.3);
 }
 
-/* Menú Popup */
+/* Menú Principal */
 .menu-popup {
     position: fixed;
     background: rgba(10, 14, 39, 0.95);
@@ -438,7 +474,7 @@ body {
 }
 
 .menu-option {
-    padding: 10px 20px;
+    padding: 12px 24px;
     border: 1px solid rgba(0, 255, 100, 0.4);
     border-radius: 8px;
     background: transparent;
@@ -473,11 +509,11 @@ body {
     transform: translateX(5px);
 }
 
-.menu-gain {
+.menu-gain-main {
     border-color: rgba(0, 255, 100, 0.4);
 }
 
-.menu-lose {
+.menu-lose-main {
     border-color: rgba(255, 0, 100, 0.4);
     color: #ff0064;
     text-shadow: 
@@ -485,7 +521,7 @@ body {
         0 0 10px rgba(255, 0, 100, 0.3);
 }
 
-.menu-lose:hover {
+.menu-lose-main:hover {
     background: rgba(255, 0, 100, 0.1);
     border-color: rgba(255, 0, 100, 0.8);
     text-shadow: 
@@ -494,4 +530,95 @@ body {
     box-shadow: 
         0 0 15px rgba(255, 0, 100, 0.4),
         inset 0 0 10px rgba(255, 0, 100, 0.1);
+}
+
+/* Submenús */
+.submenu-popup {
+    position: fixed;
+    background: rgba(10, 14, 39, 0.98);
+    border: 2px solid #00ff64;
+    border-radius: 12px;
+    padding: 12px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1001;
+    box-shadow: 
+        0 0 25px rgba(0, 255, 100, 0.6),
+        0 0 50px rgba(0, 255, 100, 0.4),
+        inset 0 0 15px rgba(0, 255, 100, 0.1);
+    animation: slideDown 0.3s ease;
+}
+
+#submenuLose {
+    border-color: rgba(255, 0, 100, 0.5);
+    box-shadow: 
+        0 0 25px rgba(255, 0, 100, 0.6),
+        0 0 50px rgba(255, 0, 100, 0.4),
+        inset 0 0 15px rgba(255, 0, 100, 0.1);
+}
+
+.submenu-popup.active {
+    display: flex;
+}
+
+.submenu-popup.hidden {
+    animation: popupFadeOut 0.3s ease;
+}
+
+.submenu-option {
+    padding: 12px 20px;
+    border: 1px solid rgba(0, 255, 100, 0.5);
+    border-radius: 8px;
+    background: rgba(0, 255, 100, 0.05);
+    color: #00ff64;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 
+        0 0 5px rgba(0, 255, 100, 0.6),
+        0 0 10px rgba(0, 255, 100, 0.3);
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.submenu-icon {
+    font-size: 16px;
+}
+
+#submenuLose .submenu-option {
+    border-color: rgba(255, 0, 100, 0.5);
+    color: #ff0064;
+    background: rgba(255, 0, 100, 0.05);
+    text-shadow: 
+        0 0 5px rgba(255, 0, 100, 0.6),
+        0 0 10px rgba(255, 0, 100, 0.3);
+}
+
+.submenu-option:hover {
+    background: rgba(0, 255, 100, 0.15);
+    border-color: rgba(0, 255, 100, 0.8);
+    text-shadow: 
+        0 0 10px rgba(0, 255, 100, 0.8),
+        0 0 20px rgba(0, 255, 100, 0.6);
+    box-shadow: 
+        0 0 15px rgba(0, 255, 100, 0.5),
+        inset 0 0 10px rgba(0, 255, 100, 0.2);
+    transform: translateX(5px);
+}
+
+#submenuLose .submenu-option:hover {
+    background: rgba(255, 0, 100, 0.15);
+    border-color: rgba(255, 0, 100, 0.8);
+    text-shadow: 
+        0 0 10px rgba(255, 0, 100, 0.8),
+        0 0 20px rgba(255, 0, 100, 0.6);
+    box-shadow: 
+        0 0 15px rgba(255, 0, 100, 0.5),
+        inset 0 0 10px rgba(255, 0, 100, 0.2);
 }
