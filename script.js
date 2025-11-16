@@ -10,15 +10,6 @@ const submenuOptions = document.querySelectorAll('.submenu-option');
 const clickSound = document.getElementById('clickSound');
 const successSound = document.getElementById('successSound');
 
-// Elementos de sugerencias
-const tabButtons = document.querySelectorAll('.tab-button');
-const tabContents = document.querySelectorAll('.tab-content');
-const submitButtons = document.querySelectorAll('.submit-btn');
-const gainTextarea = document.getElementById('gainSuggestion');
-const loseTextarea = document.getElementById('loseSuggestion');
-const gainCount = document.getElementById('gainCount');
-const loseCount = document.getElementById('loseCount');
-
 let currentWrapper = null;
 
 // Constante para el prefijo de localStorage
@@ -97,104 +88,6 @@ function initializeFromStorage() {
 }
 
 document.addEventListener('DOMContentLoaded', initializeFromStorage);
-
-// ========== FUNCIONALIDAD DE SUGERENCIAS ==========
-
-// Contador de caracteres
-gainTextarea.addEventListener('input', () => {
-    gainCount.textContent = gainTextarea.value.length;
-});
-
-loseTextarea.addEventListener('input', () => {
-    loseCount.textContent = loseTextarea.value.length;
-});
-
-// Sistema de tabs
-tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const targetTab = button.getAttribute('data-tab');
-        
-        // Remover clase active de todos los botones y contenidos
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        tabContents.forEach(content => content.classList.remove('active'));
-        
-        // Agregar clase active al botón y contenido seleccionado
-        button.classList.add('active');
-        document.getElementById(targetTab).classList.add('active');
-        
-        playClickSound();
-    });
-});
-
-// Enviar sugerencias
-submitButtons.forEach(button => {
-    button.addEventListener('click', async () => {
-        const type = button.getAttribute('data-type');
-        const textarea = type === 'gain' ? gainTextarea : loseTextarea;
-        const feedbackDiv = type === 'gain' ? document.getElementById('gainFeedback') : document.getElementById('loseFeedback');
-        const suggestion = textarea.value.trim();
-        
-        if (!suggestion) {
-            showFeedback(feedbackDiv, 'Por favor escribe una sugerencia', 'error');
-            return;
-        }
-        
-        playClickSound();
-        button.classList.add('sending');
-        button.disabled = true;
-        
-        try {
-            // Enviar al servidor
-            const response = await fetch('save_suggestion.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    type: type,
-                    suggestion: suggestion,
-                    timestamp: new Date().toLocaleString('es-ES')
-                })
-            });
-            
-            const result = await response.json();
-            
-            if (result.success) {
-                playSuccessSound();
-                showFeedback(feedbackDiv, '✨ ¡Sugerencia guardada exitosamente!', 'success');
-                textarea.value = '';
-                
-                if (type === 'gain') {
-                    gainCount.textContent = '0';
-                } else {
-                    loseCount.textContent = '0';
-                }
-                
-                // Limpiar feedback después de 3 segundos
-                setTimeout(() => {
-                    feedbackDiv.textContent = '';
-                    feedbackDiv.className = 'feedback-message';
-                }, 3000);
-            } else {
-                showFeedback(feedbackDiv, '❌ Error al guardar la sugerencia', 'error');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            showFeedback(feedbackDiv, '❌ Error de conexión', 'error');
-        } finally {
-            button.classList.remove('sending');
-            button.disabled = false;
-        }
-    });
-});
-
-// Función para mostrar feedback
-function showFeedback(element, message, type) {
-    element.textContent = message;
-    element.className = `feedback-message ${type}`;
-}
-
-// ========== FUNCIONALIDAD ORIGINAL DE AURA ==========
 
 // Mostrar menú al hacer clic en perfil
 boxWrappers.forEach(wrapper => {
