@@ -45,8 +45,15 @@ menuOptions.forEach(option => {
             boxElement.classList.remove('negative');
         }
         
-        closeMenu();
+        // El menú NO se cierra
     });
+});
+
+// Cerrar el menú solo cuando se hace clic fuera
+document.addEventListener('click', (e) => {
+    if (menuPopup.classList.contains('active') && !menuPopup.contains(e.target) && !e.target.closest('.box-wrapper')) {
+        closeMenu();
+    }
 });
 
 function closeMenu() {
@@ -56,9 +63,3 @@ function closeMenu() {
         menuPopup.classList.remove('hidden');
     }, 300);
 }
-
-document.addEventListener('click', () => {
-    if (menuPopup.classList.contains('active')) {
-        closeMenu();
-    }
-});
