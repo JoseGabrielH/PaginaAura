@@ -12,6 +12,20 @@ const successSound = document.getElementById('successSound');
 
 let currentWrapper = null;
 
+// Constante para el prefijo de localStorage
+const STORAGE_PREFIX = 'aura_';
+
+// Función para obtener valor de localStorage
+function getStoredValue(name) {
+    const stored = localStorage.getItem(STORAGE_PREFIX + name);
+    return stored !== null ? parseInt(stored) : 1000;
+}
+
+// Función para guardar valor en localStorage
+function saveValue(name, value) {
+    localStorage.setItem(STORAGE_PREFIX + name, value);
+}
+
 // Función para reproducir sonido
 function playClickSound() {
     clickSound.currentTime = 0;
@@ -35,23 +49,45 @@ function animateButton(button, type) {
     }
 }
 
-// Inicializar colores en tiempo de carga
-function initializeColors() {
+// Función para actualizar colores según valor
+function updateProfileColors(wrapper, value) {
+    const numberElement = wrapper.querySelector('.number');
+    const boxElement = wrapper.querySelector('.box');
+    const nameElement = wrapper.querySelector('.name');
+    
+    if (value < 0) {
+        numberElement.classList.add('negative');
+        boxElement.classList.add('negative');
+        nameElement.classList.add('negative');
+    } else {
+        numberElement.classList.remove('negative');
+        boxElement.classList.remove('negative');
+        nameElement.classList.remove('negative');
+    }
+}
+
+// Inicializar valores desde localStorage
+function initializeFromStorage() {
     boxWrappers.forEach(wrapper => {
-        const numberElement = wrapper.querySelector('.number');
-        const boxElement = wrapper.querySelector('.box');
         const nameElement = wrapper.querySelector('.name');
-        const currentValue = parseInt(wrapper.dataset.value);
+        const numberElement = wrapper.querySelector('.number');
+        const profileName = nameElement.textContent;
         
-        if (currentValue < 0) {
-            numberElement.classList.add('negative');
-            boxElement.classList.add('negative');
-            nameElement.classList.add('negative');
-        }
+        // Obtener valor del localStorage o usar default
+        const storedValue = getStoredValue(profileName);
+        
+        // Actualizar el atributo data-value
+        wrapper.dataset.value = storedValue;
+        
+        // Actualizar el número mostrado
+        numberElement.textContent = storedValue;
+        
+        // Actualizar colores
+        updateProfileColors(wrapper, storedValue);
     });
 }
 
-document.addEventListener('DOMContentLoaded', initializeColors);
+document.addEventListener('DOMContentLoaded', initializeFromStorage);
 
 // Mostrar menú al hacer clic en perfil
 boxWrappers.forEach(wrapper => {
@@ -111,6 +147,7 @@ submenuOptions.forEach(option => {
         const numberElement = currentWrapper.querySelector('.number');
         const boxElement = currentWrapper.querySelector('.box');
         const nameElement = currentWrapper.querySelector('.name');
+        const profileName = nameElement.textContent;
         
         let currentValue = parseInt(currentWrapper.dataset.value);
         const points = parseInt(option.dataset.points);
@@ -118,6 +155,9 @@ submenuOptions.forEach(option => {
         currentValue += points;
         currentWrapper.dataset.value = currentValue;
         numberElement.textContent = currentValue;
+        
+        // Guardar en localStorage
+        saveValue(profileName, currentValue);
         
         // Determinar tipo de animación
         const animationType = points > 0 ? 'gain' : 'lose';
@@ -133,15 +173,10 @@ submenuOptions.forEach(option => {
         boxElement.classList.add(animationType === 'gain' ? 'box-gain' : 'box-lose');
         
         // Actualizar colores
-        if (currentValue < 0) {
-            numberElement.classList.add('negative');
-            boxElement.classList.add('negative');
-            nameElement.classList.add('negative');
-        } else {
-            numberElement.classList.remove('negative');
-            boxElement.classList.remove('negative');
-            nameElement.classList.remove('negative');
-        }
+        updateProfileColors(currentWrapper, currentValue);
+        
+        // Cerrar menú después de actualizar
+        closeMenu();
     });
 });
 
