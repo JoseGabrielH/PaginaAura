@@ -8,19 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="background-chart">
-        <svg class="chart-svg" viewBox="0 0 1000 600" preserveAspectRatio="none">
+    <div class="background-arrows">
+        <svg class="arrows-svg" viewBox="0 0 1000 600" preserveAspectRatio="none">
             <defs>
-                <linearGradient id="greenGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" style="stop-color:rgba(0,255,100,0.2);stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:rgba(0,255,100,0.05);stop-opacity:1" />
-                </linearGradient>
-                <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:rgba(255,0,100,0.2);stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:rgba(255,0,100,0.05);stop-opacity:1" />
-                </linearGradient>
-                <filter id="neonGlow">
-                    <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                <filter id="neonGlowArrow">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
                     <feMerge>
                         <feMergeNode in="coloredBlur"/>
                         <feMergeNode in="SourceGraphic"/>
@@ -28,21 +20,21 @@
                 </filter>
             </defs>
             
-            <path d="M 0 400 Q 250 300 500 200 T 1000 100 L 1000 0 L 0 0 Z" fill="url(#greenGradient)" />
-            <path d="M 0 400 Q 250 300 500 200 T 1000 100 L 1000 600 L 0 600 Z" fill="url(#redGradient)" />
-            <path d="M 0 400 Q 250 300 500 200 T 1000 100" stroke="#00ff64" stroke-width="4" fill="none" filter="url(#neonGlow)" opacity="0.9" />
+            <!-- Flechas verdes (subida) -->
+            <polygon points="100,500 120,450 140,500" fill="#00ff64" stroke="#00ff64" stroke-width="1.5" opacity="0.4" filter="url(#neonGlowArrow)" />
+            <polygon points="250,550 270,500 290,550" fill="#00ff64" stroke="#00ff64" stroke-width="1.5" opacity="0.3" filter="url(#neonGlowArrow)" />
+            <polygon points="400,480 420,430 440,480" fill="#00ff64" stroke="#00ff64" stroke-width="1.5" opacity="0.35" filter="url(#neonGlowArrow)" />
+            <polygon points="550,520 570,470 590,520" fill="#00ff64" stroke="#00ff64" stroke-width="1.5" opacity="0.4" filter="url(#neonGlowArrow)" />
+            <polygon points="700,490 720,440 740,490" fill="#00ff64" stroke="#00ff64" stroke-width="1.5" opacity="0.3" filter="url(#neonGlowArrow)" />
+            <polygon points="850,530 870,480 890,530" fill="#00ff64" stroke="#00ff64" stroke-width="1.5" opacity="0.35" filter="url(#neonGlowArrow)" />
             
-            <g filter="url(#neonGlow)">
-                <polygon points="150,150 180,100 210,150" fill="#00ff64" stroke="#00ff64" stroke-width="2" opacity="1" />
-                <rect x="175" y="150" width="10" height="80" fill="#00ff64" opacity="1" />
-                <text x="200" y="260" font-family="Poppins" font-size="32" font-weight="700" fill="#00ff64" opacity="1" letter-spacing="2">SUBIDA</text>
-            </g>
-            
-            <g filter="url(#neonGlow)">
-                <polygon points="850,450 880,500 910,450" fill="#ff0064" stroke="#ff0064" stroke-width="2" opacity="1" />
-                <rect x="875" y="370" width="10" height="80" fill="#ff0064" opacity="1" />
-                <text x="700" y="520" font-family="Poppins" font-size="32" font-weight="700" fill="#ff0064" opacity="1" letter-spacing="2">BAJADA</text>
-            </g>
+            <!-- Flechas rojas (bajada) -->
+            <polygon points="150,100 170,150 190,100" fill="#ff0064" stroke="#ff0064" stroke-width="1.5" opacity="0.4" filter="url(#neonGlowArrow)" />
+            <polygon points="300,80 320,130 340,80" fill="#ff0064" stroke="#ff0064" stroke-width="1.5" opacity="0.35" filter="url(#neonGlowArrow)" />
+            <polygon points="450,120 470,170 490,120" fill="#ff0064" stroke="#ff0064" stroke-width="1.5" opacity="0.3" filter="url(#neonGlowArrow)" />
+            <polygon points="600,90 620,140 640,90" fill="#ff0064" stroke="#ff0064" stroke-width="1.5" opacity="0.4" filter="url(#neonGlowArrow)" />
+            <polygon points="750,110 770,160 790,110" fill="#ff0064" stroke="#ff0064" stroke-width="1.5" opacity="0.35" filter="url(#neonGlowArrow)" />
+            <polygon points="900,100 920,150 940,100" fill="#ff0064" stroke="#ff0064" stroke-width="1.5" opacity="0.3" filter="url(#neonGlowArrow)" />
         </svg>
     </div>
 
