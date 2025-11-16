@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f0f0f5;
+    background: #000000;
 }
 
 nav {
@@ -12,9 +12,31 @@ nav {
 }
 
 .contenido {
-    padding: 20px;
+    padding: 40px 20px;
 }
 
-h2 {
-    color: #333;
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.cuadro {
+    text-align: center;
+}
+
+.cuadro img {
+    width: 150px;
+    height: 150px;
+    background: white;
+    border-radius: 15px;
+    object-fit: cover;
+    display: block;
+}
+
+.cuadro p {
+    color: white;
+    margin-top: 10px;
+    font-weight: bold;
 }
