@@ -35,6 +35,7 @@ menuOptions.forEach(option => {
         currentWrapper.dataset.value = currentValue;
         numberElement.textContent = currentValue;
         
+        // Actualizar color en tiempo real
         if (currentValue < 0) {
             numberElement.classList.add('negative');
         } else {

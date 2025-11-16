@@ -32,6 +32,40 @@
     }
 }
 
+@keyframes neonFlickerRed {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 
+            0 0 10px rgba(255, 0, 100, 0.8),
+            0 0 20px rgba(255, 0, 100, 0.6),
+            0 0 30px rgba(255, 0, 100, 0.4),
+            0 0 40px rgba(255, 0, 100, 0.2);
+    }
+    20%, 24%, 55% {
+        text-shadow: 
+            0 0 5px rgba(255, 0, 100, 0.4),
+            0 0 10px rgba(255, 0, 100, 0.2);
+    }
+}
+
+@keyframes neonPulseRed {
+    0%, 100% {
+        text-shadow: 
+            0 0 10px rgba(255, 0, 100, 0.8),
+            0 0 20px rgba(255, 0, 100, 0.6),
+            0 0 30px rgba(255, 0, 100, 0.4),
+            0 0 40px rgba(255, 0, 100, 0.2),
+            0 0 50px rgba(255, 0, 100, 0.1);
+    }
+    50% {
+        text-shadow: 
+            0 0 15px rgba(255, 0, 100, 1),
+            0 0 30px rgba(255, 0, 100, 0.8),
+            0 0 45px rgba(255, 0, 100, 0.6),
+            0 0 60px rgba(255, 0, 100, 0.4),
+            0 0 70px rgba(255, 0, 100, 0.2);
+    }
+}
+
 @keyframes popupFadeIn {
     from {
         opacity: 0;
@@ -51,21 +85,6 @@
     to {
         opacity: 0;
         transform: scale(0.8);
-    }
-}
-
-@keyframes colorPulse {
-    0%, 100% {
-        color: #00ff64;
-        text-shadow: 
-            0 0 10px rgba(0, 255, 100, 0.8),
-            0 0 20px rgba(0, 255, 100, 0.6);
-    }
-    50% {
-        color: #00ff90;
-        text-shadow: 
-            0 0 15px rgba(0, 255, 100, 1),
-            0 0 30px rgba(0, 255, 100, 0.8);
     }
 }
 
@@ -161,7 +180,7 @@ body {
         0 0 20px rgba(255, 0, 100, 0.6),
         0 0 30px rgba(255, 0, 100, 0.4),
         0 0 40px rgba(255, 0, 100, 0.2);
-    animation: colorPulse 1.5s ease-in-out infinite;
+    animation: neonPulseRed 3s ease-in-out infinite;
 }
 
 .box-wrapper:hover .number {
@@ -172,6 +191,16 @@ body {
         0 0 45px rgba(0, 255, 100, 0.6),
         0 0 60px rgba(0, 255, 100, 0.4),
         0 0 75px rgba(0, 255, 100, 0.2);
+}
+
+.box-wrapper:hover .number.negative {
+    animation: neonFlickerRed 0.5s ease-in-out;
+    text-shadow: 
+        0 0 15px rgba(255, 0, 100, 1),
+        0 0 30px rgba(255, 0, 100, 0.8),
+        0 0 45px rgba(255, 0, 100, 0.6),
+        0 0 60px rgba(255, 0, 100, 0.4),
+        0 0 75px rgba(255, 0, 100, 0.2);
 }
 
 .box {
