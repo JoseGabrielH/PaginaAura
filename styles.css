@@ -307,12 +307,27 @@ body {
         0 0 10px rgba(0, 255, 100, 0.3);
 }
 
+.name.negative {
+    color: #ff0064;
+    text-shadow: 
+        0 0 5px rgba(255, 0, 100, 0.6),
+        0 0 10px rgba(255, 0, 100, 0.3);
+}
+
 .box-wrapper:hover .name {
     color: #00ff64;
     text-shadow: 
         0 0 10px rgba(0, 255, 100, 0.8),
         0 0 20px rgba(0, 255, 100, 0.6),
         0 0 30px rgba(0, 255, 100, 0.3);
+}
+
+.box-wrapper:hover .name.negative {
+    color: #ff0064;
+    text-shadow: 
+        0 0 10px rgba(255, 0, 100, 0.8),
+        0 0 20px rgba(255, 0, 100, 0.6),
+        0 0 30px rgba(255, 0, 100, 0.3);
 }
 
 /* Menú Popup */
